@@ -29,7 +29,6 @@
 # Environment variables
 CROSS_COMPILE := 
 CC := ${CROSS_COMPILE}cc
-AR := ${CROSS_COMPILE}ar
 CFLAGS := -g -O2
 LDFLAGS := 
 PREFIX := /usr/local
@@ -42,7 +41,7 @@ all: bf
 	'make PREFIX=[install location] install'.\n"
 	
 bf:
-	${CC} ${CFLAGS} -o bf bf.c
+	${CC} ${CFLAGS} -o bf bf.c ${LDFLAGS}
 	
 .PHONY: clean
 clean:

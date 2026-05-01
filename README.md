@@ -9,7 +9,6 @@
 
 ### Build configuration
 You can configure the build to use a different compiler or ar, or a cross-compiler:
-- AR: Defaults to `${CROSS_COMPILE}ar`, specifies which ar the build should use.
 - CC: Defaults to `${CROSS_COMPILE}cc`, specifies which compiler the build should use.
 - CFLAGS: Defaults to `-g -O2`, specifies C compiler arguments.
 - CROSS\_COMPILE: Defaults to nothing, specifies cross-compiler prefix.
