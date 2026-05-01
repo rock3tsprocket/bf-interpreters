@@ -5,7 +5,7 @@
 #include <stdint.h>
 
 int main(int argc, char *argv[]) {
-	char *code;
+	// Prepare variables
 	uint8_t cells[30000];
 	uint16_t dp = 0;
 	uint32_t ip = 0;
@@ -20,39 +20,36 @@ int main(int argc, char *argv[]) {
 		printf("Usage: %s [--help] FILE\n", argv[0]);
 		return EX_OK;
 	}
-	else {
-		FILE *fileptr = fopen(argv[1], "r");
-		if (!fileptr) {
-			fprintf(stderr, "File does not exist\n");
-			return EX_UNAVAILABLE;
-		}
 
-		fseek(fileptr, 0, SEEK_END);
-		filesize = ftell(fileptr);
-		fseek(fileptr, 0, SEEK_SET);
-
-		code = malloc(filesize);
-		fread(code, filesize, 1, fileptr);
-		fclose(fileptr);
+	// Load file
+	FILE *fileptr = fopen(argv[1], "r");
+	if (!fileptr) {
+		fprintf(stderr, "File does not exist\n");
+		return EX_UNAVAILABLE;
 	}
+
+	fseek(fileptr, 0, SEEK_END);
+	filesize = ftell(fileptr);
+	fseek(fileptr, 0, SEEK_SET);
+	char code[filesize];
+	fread(code, filesize, 1, fileptr);
+	fclose(fileptr);
 	
+	// Prepare jump table
 	uint32_t sp = 0;
 	uint32_t stack[filesize];
 	uint32_t jump[filesize];
-
 	for (i = 0; i < filesize; i++) {
-		/*printf("%d", sp);*/
 		if (code[i] == '[') {
 			stack[++sp] = i;
-			/*printf("%c\n", code[i]);*/
 		}
 		else if (code[i] == ']') {
 			jump[i] = stack[sp--];
 			jump[jump[i]] = i;
-			/*printf("%d|%c\n", jump[i], code[i]);*/
 		}
 	}
-
+	
+	// Main loop
 	while (ip < filesize) {
 		switch (code[ip]) {
 			case '+':
@@ -87,7 +84,6 @@ int main(int argc, char *argv[]) {
 				break;
 			case ']':
 				if (cells[dp]) {
-					/*printf("|%d|%d|\n", jump[ip], sizeof(jump)/8);*/
 					ip = jump[ip];
 				}
 				break;
@@ -95,9 +91,8 @@ int main(int argc, char *argv[]) {
 
 		ip++;
 	}
+
 	puts("");
-	
-	free(code);
 	return EX_OK;
 }
 
