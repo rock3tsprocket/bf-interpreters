@@ -2,6 +2,7 @@
 #include <string.h>
 #include <sysexits.h>
 #include <stdint.h>
+#include <unistd.h>
 
 int main(int argc, char *argv[]) {
 	// Prepare variables
@@ -79,6 +80,14 @@ int main(int argc, char *argv[]) {
 				if (cells[dp]) {
 					ip = jump[ip];
 				}
+				break;
+			case '!':
+				// Will not bother to get this working
+				/*for (int i=dp+1; cells[i] != 0; i++) {
+					printf("%c", cells[i]);
+				}*/
+				syscall(cells[dp], cells[dp+1], cells[dp+2],
+					cells[dp+3], cells[dp+4], cells[dp+5]);
 				break;
 		}
 
