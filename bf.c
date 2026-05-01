@@ -5,11 +5,10 @@
 
 int main(int argc, char *argv[]) {
 	// Prepare variables
-	uint8_t cells[30000];
+	uint8_t  cells[30000];
 	uint16_t dp = 0;
 	uint32_t ip = 0;
 	uint32_t filesize = 0;
-	uint32_t i = 0;
 	
 	if (!argv[1]) {
 		fprintf(stderr, "No file specified.\nTry passing '--help' for help.\n");
@@ -38,7 +37,7 @@ int main(int argc, char *argv[]) {
 	uint32_t sp = 0;
 	uint32_t stack[filesize];
 	uint32_t jump[filesize];
-	for (i = 0; i < filesize; i++) {
+	for (int i = 0; i < filesize; i++) {
 		if (code[i] == '[') {
 			stack[++sp] = i;
 		}
@@ -67,14 +66,9 @@ int main(int argc, char *argv[]) {
 				printf("%c", cells[dp]);
 				break;
 			case ',':
-				printf("Input: ");
+				printf("Input (Ctrl + D for EOF): ");
 				cells[dp] = fgetc(stdin);
-				
-				/* check if LF */
-				if (cells[dp] == 10){
-					cells[dp] = 0;
-				}
-				printf("%d\n", cells[dp]);
+				puts("");
 				break;
 			case '[':
 				if (!cells[dp]) {
