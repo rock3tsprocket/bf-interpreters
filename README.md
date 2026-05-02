@@ -1,5 +1,14 @@
 # Brainf\*\*k interpreter in C
 
+## Extensions to vanilla Brainf\*\*k
+This interpreter adds a new command to the language: '!'. With it, you can call
+any syscall that your system provides (as long as it has a syscall() function
+and it doesn't take any (const) char* arguments).
+
+To use it, one must increment the value pointed to by the data pointer to the
+syscall number, then for each argument increment the data pointer and the
+values pointed to by it, then run the '!' command.
+
 ## Building
 
 ### Dependencies
