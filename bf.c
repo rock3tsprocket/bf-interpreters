@@ -82,12 +82,13 @@ int main(int argc, char *argv[]) {
 				}
 				break;
 			case '!':
-				// Will not bother to get this working
+				// Will not bother to get this working for syscalls
+				// that take a const char* argument
 				/*for (int i=dp+1; cells[i] != 0; i++) {
 					printf("%c", cells[i]);
 				}*/
-				syscall(cells[dp], cells[dp+1], cells[dp+2],
-					cells[dp+3], cells[dp+4], cells[dp+5]);
+				printf("Result of syscall %d: %d\n", cells[dp], syscall(cells[dp], cells[dp+1], cells[dp+2],
+					cells[dp+3], cells[dp+4], cells[dp+5]));
 				break;
 		}
 
