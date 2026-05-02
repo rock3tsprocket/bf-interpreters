@@ -7,7 +7,8 @@ and it doesn't take any (const) char* arguments).
 
 To use it, one must increment the value pointed to by the data pointer to the
 syscall number, then for each argument increment the data pointer and the
-values pointed to by it, then run the '!' command.
+values pointed to by it, go back to the cell that
+contains the syscall number then run the '!' command.
 
 ## Building
 
