@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from sys import argv, stdin, stdout
+from sys import argv, stdin, stderr
 
 try:
     cells = bytearray(30000) # Memory (30kb)
@@ -18,12 +18,20 @@ try:
     jump = [None]*len(code)
     ip = 0 # Instruction pointer
 
+    if code.count("[") != code.count("]"):
+        stderr.write("Error: Brackets are unbalanced\n")
+        exit(1)
+
     # totally not taken from https://stackoverflow.com/a/3041005
     for i,o in enumerate(code):
         if o=='[':
             stack.append(i)
         elif o==']':
-            jump[i] = stack.pop()
+            try:
+                jump[i] = stack.pop()
+            except IndexError:
+                stderr.write("Error: Brackets are unbalanced\n")
+                exit(1)
             jump[jump[i]] = i
 
     while ip < len(code):
