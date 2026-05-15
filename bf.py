@@ -14,22 +14,6 @@ try:
         code = stdin.read()
         print("")
 
-    def segfaulthandler(dp, f, cellamount):
-        if dp < 0 or dp > 29999:
-            print("Brainf**k segmentation fault (core dumped)")
-        
-            f.write(f"Program: {code}\n")
-            
-            f.write("------- Memory -------\n")
-            for i in range(0, cellamount):
-                f.write(f"{cells[i]} ")
-
-            f.write("\n--- End of memory ---\n")
-            f.write(f"Data pointer: {dp}\n")
-        
-            return 1
-        return 0
-
     stack = [] # Bracket nest stack
     jump = [None]*len(code)
     ip = 0 # Instruction pointer
@@ -51,15 +35,11 @@ try:
             case ">":
                 dp+=1
                 if dp < -1 or dp > 29999:
-                    with open("core", "w") as f:
-                        if segfaulthandler(dp, f, 0):
-                            exit(1)
+                    dp -= 30000
             case "<":
                 dp-=1
                 if dp < -1 or dp > 29999:
-                    with open("core", "w") as f:
-                        if segfaulthandler(dp, f, 0):
-                            exit(1)
+                    dp += 30000
             case ".":
                 print(chr(cells[dp]), end="")
             case ",":
@@ -75,9 +55,6 @@ try:
                 if cells[dp]:
                     ip = jump[ip]
                     continue
-    
-            case "#":
-                segfaulthandler(-1, stdout, 9)
 
         ip+=1
 except KeyboardInterrupt:
