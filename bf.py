@@ -61,6 +61,6 @@ while ip < len(code):
             if cells[dp]:
                 ip = jump[ip]
                 continue
-     ip+=1
+    ip+=1
 
 print("")
