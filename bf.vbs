@@ -1,39 +1,39 @@
-rem Copyright 2026 rock3tsprocket
-rem 
-rem Redistribution and use in source and binary forms, with or without modification, are permitted
-rem provided that the following conditions are met:
-rem 
-rem 1. Redistributions of source code must retain the above copyright notice, this list of conditions and
-rem the following disclaimer.
-rem 
-rem 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions
-rem and the following disclaimer in the documentation and/or other materials provided with the
-rem distribution.
-rem 
-rem 3. Neither the name of the copyright holder nor the names of its contributors may be used to
-rem endorse or promote products derived from this software without specific prior written permission.
-rem 
-rem THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS “AS IS”
-rem AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-rem WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-rem DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-rem FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-rem DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-rem SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-rem CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR
-rem TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
-rem THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+' Copyright 2026 rock3tsprocket
+' 
+' Redistribution and use in source and binary forms, with or without modification, are permitted
+' provided that the following conditions are met:
+' 
+' 1. Redistributions of source code must retain the above copyright notice, this list of conditions and
+' the following disclaimer.
+' 
+' 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions
+' and the following disclaimer in the documentation and/or other materials provided with the
+' distribution.
+' 
+' 3. Neither the name of the copyright holder nor the names of its contributors may be used to
+' endorse or promote products derived from this software without specific prior written permission.
+' 
+' THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS “AS IS”
+' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+' WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+' DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+' FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+' DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+' SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+' CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR
+' TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+' THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 option explicit
 
-rem The Declaration of Variables:tm:
-dim   code rem Code
-dim   cells(29999) rem Memory (30k)
-dim   dp rem Data pointer
-dim   ip rem Instruction pointer
-dim   i rem Counter for for loops
-dim   fs_obj rem Filesystem object
-dim   f rem File object
+' The Declaration of Variables:tm:
+dim   code ' Code
+dim   cells(29999) ' Memory (30k)
+dim   dp ' Data pointer
+dim   ip ' Instruction pointer
+dim   i ' Counter for for loops
+dim   fs_obj ' Filesystem object
+dim   f ' File object
 
 
 if WScript.Arguments.Count < 1 then
@@ -57,8 +57,8 @@ for i=0 to 29999
 	cells(i) = 0
 next
 
-redim stack(-1) rem Stack for storing nested brackets
-dim   jump() rem Jump table
+redim stack(-1) ' Stack for storing nested brackets
+dim   jump() ' Jump table
 redim jump(Len(code)+1)
 
 for i=1 to Len(code)+1
