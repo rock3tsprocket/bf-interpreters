@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <title>Brainf**k interpreter</title>
+    <head><h1>Brainf**k interpreter</h1></head>
+    <br>
+
+    <body>
+        <form>
+            <label for="bfcode">Brainf**k code</label>
+            <br>
+            <textarea name="bfcode" rows="20" cols="40"></textarea>
+            <br>
+
+            <label for="bfinput">Brainf**k input</label>
+            <br>
+            <textarea name="bfinput" rows="2" cols="40"></textarea>
+            <br>
+            
+            <input type="button" onclick="interpret_bf(bfcode.value, bfinput.value)"value="Run it"</input>
+        </form>
+
+
+        <script>
+            function interpret_bf(code, input) {
+                // Initialize some variables
+                var output = "";
+                var cells = [];
+                for (var i=0; i < 30000; i++) cells[i] = 0;
+                var dp = 0;
+                var instruction_ptr = 0;
+                var input_ptr = 0;
+
+
+                // Prepare jump table
+                var sp = 0;
+                var stack = [];
+                var jump = [];
+                input += String.fromCharCode(0);
+                for (var i=0; i < code.length; i++) jump[i] = 0;
+                for (var i=0; i < code.length; i++) {
+                    if (code[i] == '[') {
+                        stack[++sp] = i;
+                    }
+                    else if (code[i] == ']') {
+                        jump[i] = stack[sp--];
+                        jump[jump[i]] = i;
+                    }
+                }
+
+	            // Main loop
+            	while (instruction_ptr < code.length) {
+            		switch (code.charCodeAt(instruction_ptr)) {
+            			case '+'.charCodeAt(0):
+            				cells[dp]++;
+            				break;
+            			case '-'.charCodeAt(0):
+            				cells[dp]--;
+            				break;
+            			case '>'.charCodeAt(0):
+            				dp++;
+            				break;
+            			case '<'.charCodeAt(0):
+            				dp--;
+            				break;
+            			case '.'.charCodeAt(0):
+            				output += String.fromCharCode(cells[dp]);
+            				break;
+            			case ','.charCodeAt(0):
+                            cells[dp] = input[input_ptr].charCodeAt(0);
+                            input_ptr++;
+            				break;
+            			case '['.charCodeAt(0):
+            				if (cells[dp] == 0) {
+            					instruction_ptr = jump[instruction_ptr];
+            				}
+            				break;
+            			case ']'.charCodeAt(0):
+            				if (cells[dp] != 0) {
+            					instruction_ptr = jump[instruction_ptr];
+            				}
+			            	break;
+                    }
+                    instruction_ptr++;
+                }
+                window.alert(output);
+            }
+        </script>
+    </body>
+</html>
