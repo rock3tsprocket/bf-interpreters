@@ -29,13 +29,12 @@
                 var dp = 0;
                 var instruction_ptr = 0;
                 var input_ptr = 0;
-
+                input += String.fromCharCode(0);
 
                 // Prepare jump table
                 var sp = 0;
                 var stack = [];
                 var jump = [];
-                input += String.fromCharCode(0);
                 for (var i=0; i < code.length; i++) jump[i] = 0;
                 for (var i=0; i < code.length; i++) {
                     if (code[i] == '[') {
@@ -86,4 +85,9 @@
             }
         </script>
     </body>
+    <footer>
+        <p>Made by <a href="https://github.com/rock3tsprocket">rock3tsprocket</a></p>
+        <p>Licensed under the BSD-3-Clause license</p>
+        <p>(Copyright 2026 rock3tsprocket)</p>
+    </footer>
 </html>
