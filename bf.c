@@ -58,9 +58,13 @@ int main(int argc, char *argv[]) {
 				break;
 			case '>':
 				dp++;
+                if (dp > 29999)
+                    dp -= 30000;
 				break;
 			case '<':
 				dp--;
+                if (dp < 0)
+                    dp += 30000;
 				break;
 			case '.':
 				printf("%c", cells[dp]);
