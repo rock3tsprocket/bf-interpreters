@@ -51,15 +51,23 @@
             		switch (code.charCodeAt(instruction_ptr)) {
             			case '+'.charCodeAt(0):
             				cells[dp]++;
+                            if (cells[dp] > 255)
+                                cells[dp] -= 256;
             				break;
             			case '-'.charCodeAt(0):
             				cells[dp]--;
+                            if (cells[dp] < 0)
+                                cells[dp] += 256;
             				break;
             			case '>'.charCodeAt(0):
             				dp++;
+                            if (dp > 29999)
+                                dp -= 30000;
             				break;
             			case '<'.charCodeAt(0):
             				dp--;
+                            if (dp < 0)
+                                dp += 30000;
             				break;
             			case '.'.charCodeAt(0):
             				output += String.fromCharCode(cells[dp]);
