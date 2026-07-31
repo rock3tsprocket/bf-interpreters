@@ -68,6 +68,7 @@ int main(int argc, char *argv[]) {
 				break;
 			case '.':
 				printf("%c", cells[dp]);
+                fflush(stdout);
 				break;
 			case ',':
 				printf("Input (Ctrl + D for EOF): ");
