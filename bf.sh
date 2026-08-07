@@ -116,7 +116,7 @@ while [ $ip -le ${#code} ]; do
             echo $memory | cut -d ';' -f ${dp}
             ;;
         ".")
-            printf "\x$(printf "%x" $(echo $memory | cut -d ';' -f $dp))"
+            printf "\\$(printf "%o" $(echo $memory | cut -d ';' -f $dp))"
             ;;
         "[")
             if [ $(echo $memory | cut -d ';' -f $dp) = 0 ]; then
