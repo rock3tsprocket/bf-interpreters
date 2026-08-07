@@ -76,21 +76,16 @@ while [ $ip -le ${#code} ]; do
         "+")
             memory=$(add $memory $dp 1)
             data=$(echo $memory | cut -d ';' -f $dp)
-            #echo old add $data
             if [ $data -gt 255 ]; then
                 memory=$(add $memory $dp -256)
             fi
-            #echo new add $(echo $memory | cut -d ';' -f $dp)
-            #echo "memory" $(echo $memory | cut -d ';' -f $dp)
             ;;
         "-")
             memory=$(add $memory $dp -1)
             data=$(echo $memory | cut -d ';' -f $dp)
-            #echo old $data
             if [ $data -lt 0 ]; then
                 memory=$(add $memory $dp 256)
             fi
-            #echo new $(echo $memory | cut -d ';' -f $dp)
             ;;
         ">")
             dp=$(( (${dp}+1) % 30000 ))
@@ -122,7 +117,6 @@ while [ $ip -le ${#code} ]; do
             ;;
         ".")
             printf "\x$(printf "%x" $(echo $memory | cut -d ';' -f $dp))"
-            #echo $memory | cut -d ';' -f $dp
             ;;
         "[")
             if [ $(echo $memory | cut -d ';' -f $dp) = 0 ]; then
