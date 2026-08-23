@@ -8,7 +8,7 @@ try:
     with open(argv[1], "r") as f:
         code = f.read()
 except IndexError:
-    print("Enter code here:")
+    print("Enter code here (Ctrl+D for EOF):")
     code = stdin.read()
     print("")
 
