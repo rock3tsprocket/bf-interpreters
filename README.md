@@ -8,7 +8,7 @@
 - POSIX-compliant environment i think
 
 ### Build configuration
-You can configure the build to use a different compiler or ar, or a cross-compiler:
+You can configure the build to use a different compiler, or a cross-compiler:
 - CC: Defaults to `${CROSS_COMPILE}cc`, specifies which compiler the build should use.
 - CFLAGS: Defaults to `-g -O2`, specifies C compiler arguments.
 - CROSS\_COMPILE: Defaults to nothing, specifies cross-compiler prefix.
