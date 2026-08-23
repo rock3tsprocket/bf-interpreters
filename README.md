@@ -21,7 +21,7 @@ Examples:
 ```
 $ make
 ```
-- Cross-compiling for GNU/Linux on ARMv7-A with -O3 optimizations:
+- Cross-compiling for GNU/Linux on armhf with -O3 optimizations:
 ```
 $ make CROSS_COMPILE=arm-linux-gnueabihf- CC=arm-linux-gnueabihf-gcc CFLAGS="-O3"
 ```
