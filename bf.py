@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from sys import argv, stdin, stderr
+from sys import argv, stdin, stderr, stdout
 cells = bytearray(30000) # Memory (30kb)
 dp = 0 # Data pointer
     
