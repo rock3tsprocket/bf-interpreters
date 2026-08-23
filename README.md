@@ -8,7 +8,7 @@ python3 bf.py
 ```
 
 ### Running Brainf\*\*k code from a file:
-Run the interpreter with a file path as its only argument:
+Run the interpreter with a file path as its first argument:
 ```
 python3 bf.py <PATH TO FILE CONTAINING VALID CODE>
 ```
