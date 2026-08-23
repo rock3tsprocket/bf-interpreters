@@ -4,11 +4,14 @@
 #include <unistd.h>
 
 int main(int argc, char *argv[]) {
-	// Prepare variables
+	/* Prepare variables */
 	uint8_t  cells[30000];
 	uint16_t dp = 0;
 	uint32_t ip = 0;
 	uint32_t filesize = 0;
+
+    /* i */
+    int i = 0;
 	
 	if (!argv[1]) {
 		fprintf(stderr, "No file specified.\nTry passing '--help' for help.\n");
@@ -19,7 +22,7 @@ int main(int argc, char *argv[]) {
 		return 0;
 	}
 
-	// Load file
+	/* Load file */
 	FILE *fileptr = fopen(argv[1], "r");
 	if (!fileptr) {
 		fprintf(stderr, "File does not exist\n");
@@ -33,11 +36,11 @@ int main(int argc, char *argv[]) {
 	fread(code, filesize, 1, fileptr);
 	fclose(fileptr);
 	
-	// Prepare jump table
+	/* Prepare jump table */
 	uint32_t sp = 0;
 	uint32_t stack[filesize];
 	uint32_t jump[filesize];
-	for (int i = 0; i < filesize; i++) {
+	for (i = 0; i < filesize; i++) {
 		if (code[i] == '[') {
 			stack[++sp] = i;
 		}
@@ -47,7 +50,7 @@ int main(int argc, char *argv[]) {
 		}
 	}
 	
-	// Main loop
+	/* Main loop */
 	while (ip < filesize) {
 		switch (code[ip]) {
 			case '+':

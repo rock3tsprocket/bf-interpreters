@@ -4,7 +4,7 @@
 
 ### Dependencies
 - A standard C library
-- C99 compiler or later
+- C89 compiler or later
 - POSIX-compliant environment i think
 
 ### Build configuration
