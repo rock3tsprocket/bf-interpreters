@@ -14,4 +14,4 @@ Here is a list of them in alphabetical order:
 * VBScript: In the [`vbs` branch](https://github.com/rock3tsprocket/bf-interpreters/tree/vbs)
 
 ## Copyright
-All of the interpreters are licensed under the BSD-3-Clause license. Refer to `LICENSE.md` in any of the aforementioned branches.
+All of the interpreters are licensed under the BSD-3-Clause license. Refer to `LICENSE.md` in any of the aforementioned branches for more information.
