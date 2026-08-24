@@ -3,5 +3,5 @@
 ## How to use
 Run the interpreter with a file path as its first argument:
 ```
-python3 bf.py <PATH TO FILE CONTAINING VALID CODE>
+lua bf.lua <PATH TO FILE CONTAINING VALID CODE>
 ```
