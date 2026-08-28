@@ -1,5 +1,5 @@
 # Various Brainf\*\*k interpreters
-This repository contains a collection of Brainf\*\*k interpreters that I wrote, there are currently 8 of them in here.
+This repository contains a collection of Brainf\*\*k interpreters that I wrote, there are currently 9 of them in here.
 They can be found in the branches of this repository.
 
 Here is a list of them in alphabetical order:
@@ -12,6 +12,7 @@ Here is a list of them in alphabetical order:
 * Python: In the [`python` branch](https://github.com/rock3tsprocket/bf-interpreters/tree/python)
 * Shell: In the [`sh` branch](https://github.com/rock3tsprocket/bf-interpreters/tree/sh)
 * VBScript: In the [`vbs` branch](https://github.com/rock3tsprocket/bf-interpreters/tree/vbs)
+* Vimscript: [In its own repository](https://github.com/rock3tsprocket/vrainfk)
 
 ## Copyright
 All of the interpreters are licensed under the BSD-3-Clause license. Refer to `LICENSE.md` in any of the aforementioned branches for more information.
