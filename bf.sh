@@ -113,7 +113,6 @@ while [ $ip -le ${#code} ]; do
             fi
             memory_after=$(echo $memory | cut -d ';' -f $(( ${dp}+1 ))- )
             memory="${memory_before}${char};${memory_after}"
-            echo $memory | cut -d ';' -f ${dp}
             ;;
         ".")
             printf "\\$(printf "%o" $(echo $memory | cut -d ';' -f $dp))"
