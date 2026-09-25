@@ -74,10 +74,10 @@ int main(int argc, char *argv[]) {
                 fflush(stdout);
                 break;
             case ',':
-                printf("Input (Ctrl + D for EOF): ");
+                fprintf(stderr, "Input (Ctrl + D for EOF): ");
                 cells[dp] = fgetc(stdin);
                 if ((int8_t)cells[dp] == EOF) cells[dp] = 0;
-                puts("");
+                fprintf(stderr, "\n");
                 break;
             case '[':
                 if (!cells[dp]) {
