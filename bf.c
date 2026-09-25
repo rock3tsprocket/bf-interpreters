@@ -76,6 +76,7 @@ int main(int argc, char *argv[]) {
             case ',':
                 printf("Input (Ctrl + D for EOF): ");
                 cells[dp] = fgetc(stdin);
+                if ((int8_t)cells[dp] == EOF) cells[dp] = 0;
                 puts("");
                 break;
             case '[':
