@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdint.h>
 #include <unistd.h>
 
@@ -16,10 +15,6 @@ int main(int argc, char *argv[]) {
     if (!argv[1]) {
         fprintf(stderr, "No file specified.\nTry passing '--help' for help.\n");
         return 1;
-    }
-    else if (!strcmp("--help", argv[1])) {
-        printf("Usage: %s [--help] FILE\n", argv[0]);
-        return 0;
     }
 
     /* Load file */
